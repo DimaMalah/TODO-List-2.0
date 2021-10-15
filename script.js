@@ -4,30 +4,35 @@ const listEl = document.querySelector(".list")
 const cross = document.querySelector(".close")
 
 
-inputBtnEl.addEventListener("click", (e) => {
+inputBtnEl.addEventListener("click", addElementIntoList)
+
+listEl.addEventListener("click", changeColor)
+
+listEl.addEventListener("click", remove)
+
+
+//---------------------------------------------------------------------------------
+
+function addElementIntoList(e) {
 	if (inputEl.value) {
 		createLiEl(inputEl.value)
 		inputEl.value = ""
 	} else {
 		return
 	}
-})
+}
 
-listEl.addEventListener("click", function (e) {
+function changeColor(e) {
 	if (e.target.closest(".list-item")) {
 		e.target.classList.toggle("green")
 	}
-})
-listEl.addEventListener("click", function (e) {
+}
+
+function remove(e) {
 	if (e.target.closest(".close")) {
 		listEl.removeChild(e.target.closest(".list-item"))
 	}
-})
-
-
-//---------------------------------------------------------------------------------
-
-
+}
 
 function createLiEl(value) {
 	const li = document.createElement("li")
@@ -43,6 +48,10 @@ function createLiEl(value) {
 	li.appendChild(closing)
 
 }
+
+
+
+
 
 
 
